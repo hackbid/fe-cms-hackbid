@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { triggerNotification } from "../../../util/successNotification.js";
-import { loginEndPoint } from "../../../api/baseUrl.js";
+import {loginEndPoint, loginId} from "../../../api/baseUrl.js";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -12,6 +12,7 @@ const LoginForm = () => {
   const mutationLogin = useMutation({
     mutationFn: (data) => {
       setIsLoading(true);
+      console.log(loginEndPoint)
       return axios.post(loginEndPoint, data);
     },
 
@@ -22,7 +23,7 @@ const LoginForm = () => {
     onSuccess: async (data, variables, context) => {
       const { access_key, username, email, id } = data.data;
       const { data: UserData } = await axios.get(
-        `http://localhost:4000/users/findById/${id}`
+        `${loginId}/${id}`
       );
       const { imageProfile } = UserData;
       localStorage.setItem("image", imageProfile);

@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:4000";
+const baseUrl = "https://api.hackbid.com";
 export const categoriesUrl = `${baseUrl}/categories`;
 export const usersUrl = `${baseUrl}/users/findAll`;
 
@@ -12,3 +12,5 @@ export const deleteItemUrl = `${baseUrl}/items/report`;
 export const getItemsUrl = `${baseUrl}/items`;
 
 export const loginEndPoint = `${baseUrl}/users/login`;
+
+export const loginId = `${baseUrl}/users/findById`;

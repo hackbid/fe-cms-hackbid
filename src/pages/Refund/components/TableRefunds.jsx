@@ -46,6 +46,12 @@ const TableRefunds = () => {
           .invalidateQueries(["withdrawals"])
           .then((r) => triggerNotification("Refund Rejected", "info"));
       },
+      onError: () => {
+        triggerNotification("Refund Rejected", "info");
+      },
+      onSettled: () => {
+        queryClient.invalidateQueries(["withdrawals"])
+      }
     }
   );
 
